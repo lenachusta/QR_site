@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Make QR</title>
+</head>
+<body>
+<div>
+    <h1>Сайты</h1>
+    <table>
+        <tr>
+          <th>Название</th>
+          <th>Описание</th>
+        </tr>
+        {% for site in sites %}
+       <tr>
+           <td><a {% if site.url != '' %} href="{{ site.qr_code.url }}" download
+                  {% else %} onclick="alert('Ошибка. Отсутствует URL.') "LANGUAGE="Javascript" {% endif %}>{{ site.name }}</a></td>
+           {% if site.description != '' %}
+                <td>{{ site.description }}</td>
+           {% else %}
+                <td>Отсутствует описание</td>
+           {% endif %}
+       </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>
